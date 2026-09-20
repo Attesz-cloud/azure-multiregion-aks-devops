@@ -1,0 +1,11 @@
+
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+*.tfvars.json
+
+
+*.pem
+*.key
+.env

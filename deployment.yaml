@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webshop-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webshop-app
+  template:
+    metadata:
+      labels:
+        app: webshop-app
+    spec:
+      containers:
+      - name: webshop-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
