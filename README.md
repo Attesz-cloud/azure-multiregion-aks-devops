@@ -20,15 +20,15 @@ The network topology is based on a global Hub-and-Spoke design across two separa
 ## Directory Structure
 ```text
 ├── .github/workflows/
-│   └── deploy.yaml           # GitHub Actions validation pipeline
+│   └── deploy.yaml          
 ├── modules/azure_region/
-│   ├── main.tf               # Regional module (VNet, Subnet, AKS, Log Analytics)
+│   ├── main.tf              
 │   ├── variables.tf
 │   └── outputs.tf
-├── main.tf                       # Main configuration (calls the module twice)
-├── deployment.yaml               # Kubernetes deployment
-├── service.yaml                  # Kubernetes service
-├── hpa.yaml                      # Horizontal Pod Autoscaler
+├── main.tf                       
+├── deployment.yaml               
+├── service.yaml                  
+├── hpa.yaml                      
 └── README.md
 ```
 
@@ -38,8 +38,8 @@ The network topology is based on a global Hub-and-Spoke design across two separa
 Since I am running this without active cloud credits, I configured the GitHub Actions workflow to run as a strict **Validation Pipeline**. It tests everything end-to-end without spinning up actual resources in Azure.
 
 ### What the pipeline checks:
-* **Terraform formatting:** Runs `terraform fmt` to keep the code clean.
-* **Syntax validation:** Runs `terraform validate` to make sure there are no typos.
+* **Terraform formatting:** Runs "terraform fmt" to keep the code clean.
+* **Syntax validation:** Runs "terraform validate" to make sure there are no typos.
 * **Security analysis:** Uses **Checkov** to scan the Terraform files for security risks before deployment.
 * **Kubernetes sanity check:** A quick Python script validates that the YAML files are structurally sound.
 
