@@ -49,6 +49,7 @@ Since I am running this without active cloud credits, I configured the GitHub Ac
 
 ### 1. Successful Pipeline Run
 ![Pipeline Status](pipeline_success.png)
+*Note: The initial pipeline runs failed due to minor Terraform configuration syntax issues (such as local variable formatting and peering arguments). After troubleshooting and fixing the configuration, the `terraform validate` stage passed successfully, resulting in a fully green end-to-end run.*
 
 ### 2. Checkov Static Code Analysis
 ![Security Scan](checkov_scan.png)
