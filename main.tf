@@ -1,4 +1,5 @@
-required_providers {
+terraform {
+  required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~> 3.0"
@@ -14,8 +15,8 @@ locals {
   project_name = "core"
   environment  = "prod"
   tags = {
-    Environment = "Production"
-    ManagedBy   = "Terraform"
+    Environment  = "Production"
+    ManagedBy    = "Terraform"
     Architecture = "MultiRegion-DevOps"
   }
 }
@@ -51,7 +52,7 @@ resource "azurerm_virtual_network_peering" "global_primary_to_secondary" {
   name                         = "peer-global-westeurope-to-northeurope"
   resource_group_name          = module.region_primary.resource_group_name
   virtual_network_name         = module.region_primary.hub_vnet_name
-  remote_virtual_network_id    = module.region_secondary.hub_vnet_id
+  remote_network_id            = module.region_secondary.hub_vnet_id
   allow_virtual_network_access = true
   allow_forwarded_traffic      = true
 }
@@ -60,7 +61,7 @@ resource "azurerm_virtual_network_peering" "global_secondary_to_primary" {
   name                         = "peer-global-northeurope-to-westeurope"
   resource_group_name          = module.region_secondary.resource_group_name
   virtual_network_name         = module.region_secondary.hub_vnet_name
-  remote_virtual_network_id    = module.region_primary.hub_vnet_id
+  remote_network_id            = module.region_primary.hub_vnet_id
   allow_virtual_network_access = true
   allow_forwarded_traffic      = true
 }
